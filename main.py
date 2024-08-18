@@ -6,7 +6,7 @@ from utils.file_reader import read_blood_test_report
 
 def main():
    
-    blood_test_url = "https://cdn1.lalpathlabs.com/live/reports/WM17S.pdf"
+    blood_test_url = ""
     
    
     blood_test_data = read_blood_test_report(blood_test_url)

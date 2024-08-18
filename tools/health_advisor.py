@@ -5,8 +5,7 @@ class HealthAdvisor(BaseTool):
     description = "Provides health recommendations based on analysis and research"
 
     def _run(self, analysis: str, articles: list):
-        # Implement recommendation logic here
-        # This is a simplified example
+        
         recommendations = "Based on the analysis and research:\n"
         recommendations += "1. Maintain a balanced diet\n"
         recommendations += "2. Exercise regularly\n"
