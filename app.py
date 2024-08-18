@@ -5,13 +5,12 @@ import io
 import os
 from pdfminer.high_level import extract_text_to_fp
 
-# Load environment variables
 
 
 try:
     import google.generativeai as genai
     GEMINI_AVAILABLE = True
-    # Configure Gemini API
+    
     genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 except ImportError:
     GEMINI_AVAILABLE = False
@@ -47,10 +46,10 @@ if uploaded_file is not None:
     try:
         st.write("Analyzing your blood test report...")
         
-        # Read PDF content
+        
         pdf_content = extract_text_from_pdf(uploaded_file)
         
-        # Analyze the blood test using Gemini
+       
         result = analyze_blood_test(pdf_content)
         
         st.write("Analysis complete!")
