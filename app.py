@@ -1,12 +1,12 @@
 import streamlit as st
 import io
 
-from dotenv import load_dotenv
+
 import os
 from pdfminer.high_level import extract_text_to_fp
 
 # Load environment variables
-load_dotenv()
+
 
 try:
     import google.generativeai as genai
@@ -58,4 +58,4 @@ if uploaded_file is not None:
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")
 
-        st.write("Gemini API Status:", "Available" if GEMINI_AVAILABLE else "Not Available")
+      
