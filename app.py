@@ -1,23 +1,20 @@
 import streamlit as st
-import PyPDF2
-from PyPDF2 import PdfReader
 import io
 import google.generativeai as genai
 from dotenv import load_dotenv
 import os
+from pdfminer.high_level import extract_text_to_fp
 
-
+# Load environment variables
 load_dotenv()
 
-
-genai.configure(api_key=os.getenv("AIzaSyCCf6savj7FCJjioWqgQ6DZ51Zx-MLDrcQ"))
+# Configure Gemini API
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 def extract_text_from_pdf(pdf_file):
-    pdf_reader = PdfReader(pdf_file)
-    text = ""
-    for page in pdf_reader.pages:
-        text += page.extract_text()
-    return text
+    output_string = io.StringIO()
+    extract_text_to_fp(pdf_file, output_string)
+    return output_string.getvalue()
 
 def analyze_blood_test(blood_test_data):
     model = genai.GenerativeModel('gemini-pro')
@@ -45,10 +42,10 @@ if uploaded_file is not None:
     try:
         st.write("Analyzing your blood test report...")
         
-        
+        # Read PDF content
         pdf_content = extract_text_from_pdf(uploaded_file)
         
-       
+        # Analyze the blood test using Gemini
         result = analyze_blood_test(pdf_content)
         
         st.write("Analysis complete!")
