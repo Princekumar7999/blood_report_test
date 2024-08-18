@@ -9,7 +9,7 @@ import os
 load_dotenv()
 
 
-genai.configure(api_key=os.getenv("AIzaSyCCf6savj7FCJjioWqgQ6DZ51Zx-MLDrcQ"))
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 def extract_text_from_pdf(pdf_file):
     pdf_reader = PdfReader(pdf_file)
