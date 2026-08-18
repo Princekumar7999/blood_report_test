@@ -1,4 +1,4 @@
-from crewai.agent import Agent
+from crewai import Agent
 from tools.blood_test_analyzer import BloodTestAnalyzer
 
 blood_test_agent = Agent(
