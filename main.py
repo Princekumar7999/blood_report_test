@@ -1,4 +1,29 @@
-from crewai import Crew, Task
+try:
+    from crewai import Crew, Task
+except ImportError:
+    # Define mock classes that raise an error when instantiated
+    # This allows the script to be parsed and imported even if crewai is not installed,
+    # but will fail gracefully when crewai components are actually used,
+    # providing a clear message to the user.
+    class Crew:
+        def __init__(self, *args, **kwargs):
+            raise RuntimeError(
+                "The 'crewai' library is not installed. "
+                "Please install it using: pip install crewai"
+            )
+        def kickoff(self):
+            raise RuntimeError(
+                "The 'crewai' library is not installed. "
+                "Please install it using: pip install crewai"
+            )
+
+    class Task:
+        def __init__(self, *args, **kwargs):
+            raise RuntimeError(
+                "The 'crewai' library is not installed. "
+                "Please install it using: pip install crewai"
+            )
+
 from agents.blood_test_agent import blood_test_agent
 from agents.web_research_agent import web_research_agent
 from agents.health_advisor_agent import health_advisor_agent
