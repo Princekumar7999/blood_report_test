@@ -1,4 +1,10 @@
-import streamlit as st
+import sys
+try:
+    import streamlit as st
+except ImportError:
+    print("ERROR: Streamlit is not installed or cannot be imported.")
+    print("Please ensure Streamlit is installed in your environment: pip install streamlit")
+    sys.exit(1)
 import io
 
 
@@ -56,5 +62,3 @@ if uploaded_file is not None:
         st.write(result)
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")
-
-      
